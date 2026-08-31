@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_efa_consolidation_entity_tree" model="ir.ui.view">
+        <field name="name">efa.consolidation.entity.tree</field>
+        <field name="model">efa.consolidation.entity</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="company_id"/>
+                <field name="ownership_pct"/>
+                <field name="consolidation_method"/>
+                <field name="period"/>
+                <field name="total_assets" sum="Total Assets"/>
+                <field name="total_revenue" sum="Total Revenue"/>
+                <field name="net_income" sum="Net Income"/>
+                <field name="intercompany_eliminations" sum="Eliminations"/>
+                <field name="consolidated" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_efa_consolidation_entity_form" model="ir.ui.view">
+        <field name="name">efa.consolidation.entity.form</field>
+        <field name="model">efa.consolidation.entity</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="company_id"/>
+                            <field name="currency_id"/>
+                            <field name="ownership_pct"/>
+                            <field name="consolidation_method"/>
+                        </group>
+                        <group>
+                            <field name="period"/>
+                            <field name="total_assets"/>
+                            <field name="total_revenue"/>
+                            <field name="net_income"/>
+                            <field name="intercompany_eliminations"/>
+                            <field name="consolidated"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_efa_consolidation_entity" model="ir.actions.act_window">
+        <field name="name">Consolidation Entities</field>
+        <field name="res_model">efa.consolidation.entity</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

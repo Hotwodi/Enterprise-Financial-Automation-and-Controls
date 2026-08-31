@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_efa_root" name="Financial Automation" sequence="10"/>
+
+    <menuitem id="menu_efa_close" name="Close Management" parent="menu_efa_root" sequence="10"/>
+    <menuitem id="menu_efa_close_tasks" name="Close Tasks" parent="menu_efa_close" action="action_efa_close_task" sequence="10"/>
+
+    <menuitem id="menu_efa_controls" name="Internal Controls" parent="menu_efa_root" sequence="20"/>
+    <menuitem id="menu_efa_controls_list" name="Controls" parent="menu_efa_controls" action="action_efa_internal_control" sequence="10"/>
+    <menuitem id="menu_efa_sod" name="SoD Conflicts" parent="menu_efa_controls" action="action_efa_sod_conflict" sequence="20"/>
+
+    <menuitem id="menu_efa_anomaly" name="Anomaly Detection" parent="menu_efa_root" sequence="30"/>
+    <menuitem id="menu_efa_anomaly_list" name="Anomalies" parent="menu_efa_anomaly" action="action_efa_anomaly" sequence="10"/>
+
+    <menuitem id="menu_efa_consolidation" name="Consolidation" parent="menu_efa_root" sequence="40"/>
+    <menuitem id="menu_efa_consolidation_list" name="Entities" parent="menu_efa_consolidation" action="action_efa_consolidation_entity" sequence="10"/>
+
+    <menuitem id="menu_efa_reconciliation" name="Reconciliation" parent="menu_efa_root" sequence="50"/>
+    <menuitem id="menu_efa_reconciliation_list" name="Rules" parent="menu_efa_reconciliation" action="action_efa_reconciliation_rule" sequence="10"/>
+</odoo>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_efa_internal_control_tree" model="ir.ui.view">
+        <field name="name">efa.internal.control.tree</field>
+        <field name="model">efa.internal.control</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="control_type"/>
+                <field name="frequency"/>
+                <field name="owner_id"/>
+                <field name="state" widget="badge"/>
+                <field name="compliance_score" widget="progressbar"/>
+                <field name="sod_conflict"/>
+                <field name="last_tested"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_efa_internal_control_form" model="ir.ui.view">
+        <field name="name">efa.internal.control.form</field>
+        <field name="model">efa.internal.control</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="control_type"/>
+                            <field name="frequency"/>
+                        </group>
+                        <group>
+                            <field name="owner_id"/>
+                            <field name="state"/>
+                            <field name="compliance_score" widget="progressbar"/>
+                            <field name="last_tested"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <field name="description"/>
+                        </page>
+                        <page string="SoD Conflicts">
+                            <group>
+                                <field name="sod_conflict"/>
+                                <field name="sod_notes" invisible="not sod_conflict"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_efa_internal_control" model="ir.actions.act_window">
+        <field name="name">Internal Controls</field>
+        <field name="res_model">efa.internal.control</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_efa_sod_conflict_tree" model="ir.ui.view">
+        <field name="name">efa.sod.conflict.tree</field>
+        <field name="model">efa.sod.conflict</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="user_id"/>
+                <field name="role_a"/>
+                <field name="role_b"/>
+                <field name="severity" widget="badge"/>
+                <field name="state" widget="badge"/>
+                <field name="detected_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_efa_sod_conflict_form" model="ir.ui.view">
+        <field name="name">efa.sod.conflict.form</field>
+        <field name="model">efa.sod.conflict</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="user_id"/>
+                            <field name="severity"/>
+                        </group>
+                        <group>
+                            <field name="role_a"/>
+                            <field name="role_b"/>
+                            <field name="state"/>
+                            <field name="detected_date"/>
+                            <field name="control_id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_efa_sod_conflict" model="ir.actions.act_window">
+        <field name="name">SoD Conflicts</field>
+        <field name="res_model">efa.sod.conflict</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

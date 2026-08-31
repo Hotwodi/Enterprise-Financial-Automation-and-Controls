@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_efa_close_task,efa.close.task,model_efa_close_task,base.group_user,1,1,1,1
+access_efa_internal_control,efa.internal.control,model_efa_internal_control,base.group_user,1,1,1,1
+access_efa_sod_conflict,efa.sod.conflict,model_efa_sod_conflict,base.group_user,1,1,1,1
+access_efa_anomaly,efa.anomaly,model_efa_anomaly,base.group_user,1,1,1,1
+access_efa_consolidation_entity,efa.consolidation.entity,model_efa_consolidation_entity,base.group_user,1,1,1,1
+access_efa_reconciliation_rule,efa.reconciliation.rule,model_efa_reconciliation_rule,base.group_user,1,1,1,1

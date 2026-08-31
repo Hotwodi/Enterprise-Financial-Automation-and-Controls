@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_efa_anomaly_tree" model="ir.ui.view">
+        <field name="name">efa.anomaly.tree</field>
+        <field name="model">efa.anomaly</field>
+        <field name="arch" type="xml">
+            <tree decoration-danger="state == 'confirmed'" decoration-warning="state == 'investigating'">
+                <field name="name"/>
+                <field name="anomaly_type"/>
+                <field name="amount" sum="Total"/>
+                <field name="account"/>
+                <field name="ai_confidence" widget="progressbar"/>
+                <field name="state" widget="badge"/>
+                <field name="assigned_to"/>
+                <field name="detected_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_efa_anomaly_form" model="ir.ui.view">
+        <field name="name">efa.anomaly.form</field>
+        <field name="model">efa.anomaly</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_investigate" type="object" string="Investigate" class="oe_highlight" invisible="state != 'new'"/>
+                    <button name="action_confirm" type="object" string="Confirm Fraud" class="oe_highlight" invisible="state != 'investigating'"/>
+                    <button name="action_false_positive" type="object" string="False Positive" invisible="state != 'investigating'"/>
+                    <button name="action_resolve" type="object" string="Resolve" invisible="state not in ('confirmed', 'false_positive')"/>
+                    <field name="state" widget="statusbar" statusbar_visible="new,investigating,confirmed,resolved"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="anomaly_type"/>
+                            <field name="amount"/>
+                            <field name="account"/>
+                            <field name="journal_ref"/>
+                        </group>
+                        <group>
+                            <field name="ai_confidence" widget="progressbar"/>
+                            <field name="assigned_to"/>
+                            <field name="detected_date"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Details">
+                            <field name="description"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_efa_anomaly" model="ir.actions.act_window">
+        <field name="name">Financial Anomalies</field>
+        <field name="res_model">efa.anomaly</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

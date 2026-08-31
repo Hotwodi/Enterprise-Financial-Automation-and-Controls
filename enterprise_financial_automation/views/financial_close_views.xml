@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_efa_close_task_tree" model="ir.ui.view">
+        <field name="name">efa.close.task.tree</field>
+        <field name="model">efa.close.task</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="period"/>
+                <field name="company_id"/>
+                <field name="assigned_to"/>
+                <field name="state" widget="badge"/>
+                <field name="priority" widget="priority"/>
+                <field name="due_date"/>
+                <field name="ai_risk_score" widget="progressbar"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_efa_close_task_form" model="ir.ui.view">
+        <field name="name">efa.close.task.form</field>
+        <field name="model">efa.close.task</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_start" type="object" string="Start" class="oe_highlight" invisible="state != 'draft'"/>
+                    <button name="action_review" type="object" string="Submit for Review" class="oe_highlight" invisible="state != 'in_progress'"/>
+                    <button name="action_done" type="object" string="Complete" class="oe_highlight" invisible="state != 'review'"/>
+                    <button name="action_block" type="object" string="Block" invisible="state in ('done', 'blocked')"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,in_progress,review,done"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="period"/>
+                            <field name="company_id"/>
+                            <field name="assigned_to"/>
+                        </group>
+                        <group>
+                            <field name="priority"/>
+                            <field name="due_date"/>
+                            <field name="completed_date" readonly="state != 'done'"/>
+                            <field name="ai_risk_score" widget="progressbar"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Notes">
+                            <field name="notes"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_efa_close_task" model="ir.actions.act_window">
+        <field name="name">Close Tasks</field>
+        <field name="res_model">efa.close.task</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
