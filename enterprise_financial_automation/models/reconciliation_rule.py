@@ -4,7 +4,7 @@ from odoo import models, fields, api
 class ReconciliationRule(models.Model):
     _name = 'efa.reconciliation.rule'
     _description = 'Smart Reconciliation Rule'
-    _inherit = ['mail.thread']
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string='Rule Name', required=True)
     rule_type = fields.Selection([

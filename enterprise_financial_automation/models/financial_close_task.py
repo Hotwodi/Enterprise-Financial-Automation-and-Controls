@@ -5,7 +5,7 @@ from odoo.exceptions import UserError
 class FinancialCloseTask(models.Model):
     _name = 'efa.close.task'
     _description = 'Financial Close Task'
-    _inherit = ['mail.thread']
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _order = 'sequence, id'
 
     name = fields.Char(string='Task Name', required=True, tracking=True)

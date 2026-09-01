@@ -4,7 +4,7 @@ from odoo import models, fields, api
 class ConsolidationEntity(models.Model):
     _name = 'efa.consolidation.entity'
     _description = 'Consolidation Entity'
-    _inherit = ['mail.thread']
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string='Entity Name', required=True)
     code = fields.Char(string='Entity Code', required=True)

@@ -4,7 +4,7 @@ from odoo import models, fields, api
 class FinancialAnomaly(models.Model):
     _name = 'efa.anomaly'
     _description = 'Financial Anomaly Detection'
-    _inherit = ['mail.thread']
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _order = 'create_date desc'
 
     name = fields.Char(string='Anomaly', required=True)

@@ -4,7 +4,7 @@
         <field name="name">efa.reconciliation.rule.tree</field>
         <field name="model">efa.reconciliation.rule</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="name"/>
                 <field name="rule_type"/>
                 <field name="tolerance"/>
@@ -13,7 +13,7 @@
                 <field name="matched_count"/>
                 <field name="unmatched_count"/>
                 <field name="last_run"/>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -53,6 +53,6 @@
     <record id="action_efa_reconciliation_rule" model="ir.actions.act_window">
         <field name="name">Reconciliation Rules</field>
         <field name="res_model">efa.reconciliation.rule</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
     </record>
 </odoo>

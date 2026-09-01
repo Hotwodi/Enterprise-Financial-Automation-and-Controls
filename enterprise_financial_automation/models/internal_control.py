@@ -4,7 +4,7 @@ from odoo import models, fields, api, _
 class InternalControl(models.Model):
     _name = 'efa.internal.control'
     _description = 'Internal Control'
-    _inherit = ['mail.thread']
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _order = 'name'
 
     name = fields.Char(string='Control Name', required=True, tracking=True)
