@@ -1,6 +1,7 @@
 {
     'name': 'Enterprise Financial Automation & Controls',
     'version': '18.0.1.0.0',
+    'images': ['static/description/cover.png'],
     'category': 'Productivity/AI',
     'summary': 'AI-driven financial close automation, internal controls, and real-time audit trails.',
     'description': """
